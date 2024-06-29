@@ -12,6 +12,7 @@ MINIO_SECRET_KEY=${MINIO_SECRET_KEY:-`openssl rand -hex 32`}
 OIDC_CLIENT_SECRET=${MINIO_SECRET_KEY:-`openssl rand -hex 28`}
 OUTLINE_SECRET_KEY=${OUTLINE_SECRET_KEY:-`openssl rand -hex 32`}
 OUTLINE_UTILS_SECRET=${OUTLINE_UTILS_SECRET:-`openssl rand -hex 32`}
+OIDC_LOGOUT_URI="$URL/uc/accounts/logout"
 DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-`openssl rand -hex 32`}
 
 function update_config_file {
@@ -74,7 +75,10 @@ function create_outline_env_file {
     env_replace AWS_SECRET_ACCESS_KEY $MINIO_SECRET_KEY $env_file
     env_replace AWS_S3_UPLOAD_BUCKET_URL $URL $env_file
 
+
     env_add ALLOWED_DOMAINS "$ALLOWED_DOMAINS" $env_file
+
+    env_add OIDC_LOGOUT_URI $OIDC_LOGOUT_URI $env_file
 }
 
 function create_oidc_env_file {
