@@ -21,6 +21,7 @@ function update_config_file {
     env_replace OIDC_CLIENT_SECRET $OIDC_CLIENT_SECRET config.sh
     env_replace OUTLINE_SECRET_KEY $OUTLINE_SECRET_KEY config.sh
     env_replace OUTLINE_UTILS_SECRET $OUTLINE_UTILS_SECRET config.sh
+    env_replace OIDC_DISABLE_REDIRECT $OIDC_DISABLE_REDIRECT config.sh
     env_replace DJANGO_SECRET_KEY $DJANGO_SECRET_KEY config.sh
 }
 
@@ -79,6 +80,8 @@ function create_outline_env_file {
     env_add ALLOWED_DOMAINS "$ALLOWED_DOMAINS" $env_file
 
     env_add OIDC_LOGOUT_URI $OIDC_LOGOUT_URI $env_file
+
+    env_add OIDC_DISABLE_REDIRECT $OIDC_DISABLE_REDIRECT $env_file
 }
 
 function create_oidc_env_file {

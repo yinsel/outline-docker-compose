@@ -17,6 +17,9 @@ FORCE_HTTPS=false
 # If not set, the first user's domain is allowed by default.
 ALLOWED_DOMAINS=
 
+# OIDC REDIRECT
+OIDC_DISABLE_REDIRECT=true
+
 # Docker image version
 # old 0.72.0-3
 OUTLINE_VERSION=latest
