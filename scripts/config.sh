@@ -3,7 +3,7 @@
 # For "local", the avatar images and document attachments will be saved on local disk. 
 FILE_STORAGE=local
 # The url used to vist this web site.
-URL=http://127.0.0.1:8888
+URL=https://127.0.0.1
 # The default interface language. See translate.getoutline.com for a list of
 # available language codes and their rough percentage translated.
 DEFAULT_LANGUAGE=zh_CN
@@ -32,13 +32,13 @@ MINIO_MC_VERSION=RELEASE.2022-11-17T21-20-39Z
 # If you use ip address to access outline, this ip and port should be same as the URL.
 # If this server behind a proxy(nginx), you can bind to `127.0.0.1`.
 HTTP_IP=127.0.0.1
-HTTP_PORT_IP=8888
+HTTP_PORT_IP=443
 
 # Docker
 # If you server behind a proxy(nginx), and the proxy created by docker. You can use the proxy's network. Set the `NETWORKS` to proxy's network name, and set `NETWORKS_EXTERNAL` to `true` .
 # The sample config for host nginx can be find in `config/sample/nginx_outline.conf`.
 NETWORKS=outlinewiki
-NETWORKS_EXTERNAL=true
+NETWORKS_EXTERNAL=false
 
 # Secret keys, update by script.
 # You shouldn't edit it.
