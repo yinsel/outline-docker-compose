@@ -48,6 +48,7 @@ services:
     image: outlinewiki/outline:${OUTLINE_VERSION}
     command: sh -c "yarn db:migrate --env production-ssl-disabled && yarn start"
     environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
       - DATABASE_URL=postgres://user:pass@wk-postgres:5432/outline
       - DATABASE_URL_TEST=postgres://user:pass@wk-postgres:5432/outline-test
       - REDIS_URL=redis://wk-redis:6379
