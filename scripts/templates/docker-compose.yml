@@ -39,8 +39,11 @@ services:
       until (/usr/bin/mc config host add minio http://wk-minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}) do echo '...waiting...' && sleep 1; done;
       /usr/bin/mc mb minio/outline-bucket;
       /usr/bin/mc anonymous set download minio/outline-bucket;
+      /usr/bin/mc anonymous set-json /config/policy.json minio/outline-bucket;
       exit 0;
       "
+    volumes:
+      - ./scripts/policy.json:/config/policy.json:z
     networks:
       - ${NETWORKS}
 ##END
@@ -57,6 +60,7 @@ services:
       - ./env.oidc
     volumes:
       - ./data/outline:/var/lib/outline/data
+    user: 0:0
     restart: always
     depends_on:
       - wk-postgres
