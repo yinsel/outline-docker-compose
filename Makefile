@@ -35,6 +35,6 @@ clean-conf:
 
 clean-data: clean-docker
 	rm -rfv ./data/certs ./data/minio_root \
-		./data/pgdata ./data/uc ./data/outline
+		./data/pgdata ./data/uc/db ./data/outline
 
 clean: clean-docker clean-conf
