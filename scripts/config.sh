@@ -38,7 +38,7 @@ HTTP_PORT_IP=8888
 # If you server behind a proxy(nginx), and the proxy created by docker. You can use the proxy's network. Set the `NETWORKS` to proxy's network name, and set `NETWORKS_EXTERNAL` to `true` .
 # The sample config for host nginx can be find in `config/sample/nginx_outline.conf`.
 NETWORKS=outlinewiki
-NETWORKS_EXTERNAL=true
+NETWORKS_EXTERNAL=false
 
 # Secret keys, update by script.
 # You shouldn't edit it.
