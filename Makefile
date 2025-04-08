@@ -10,7 +10,7 @@ start:
 	cd ./scripts && bash ./main.sh reload_nginx
 
 install: gen-conf start
-	sleep 1
+	sleep 8
 	${docker-compose} exec ${oidc_server_container} bash -c "make init"
 	${docker-compose} exec ${oidc_server_container} bash -c "python3 manage.py loaddata oidc-server-outline-client"
 	cd ./scripts && bash ./main.sh reload_nginx
