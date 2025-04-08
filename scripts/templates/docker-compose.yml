@@ -1,12 +1,12 @@
 version: "3"
 services:
   wk-redis:
-    image: redis:latest
+    image: hub.mirrorify.net/library/redis:latest
     restart: always
     networks:
       - ${NETWORKS}
   wk-postgres:
-    image: postgres:${POSTGRES_VERSION}
+    image: hub.mirrorify.net/library/postgres:${POSTGRES_VERSION}
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
@@ -18,7 +18,7 @@ services:
       - ${NETWORKS}
 ##BEGIN MINIO 
   wk-minio:
-    image: minio/minio:${MINIO_VERSION}
+    image: hub.mirrorify.net/minio/minio:${MINIO_VERSION}
     volumes:
       - ./data/minio_root:/minio_root:z
       - ./data/certs:/root/.minio/certs:z
@@ -29,7 +29,7 @@ services:
     networks:
       - ${NETWORKS}
   wk-createbuckets:
-    image: minio/mc:${MINIO_MC_VERSION}
+    image: hub.mirrorify.net/minio/mc:${MINIO_MC_VERSION}
     depends_on:
       - wk-minio
     env_file:
@@ -48,7 +48,7 @@ services:
       - ${NETWORKS}
 ##END
   wk-outline:
-    image: outlinewiki/outline:${OUTLINE_VERSION}
+    image: hub.mirrorify.net/outlinewiki/outline:${OUTLINE_VERSION}
     command: sh -c "yarn db:migrate --env production-ssl-disabled && yarn start"
     environment:
       - NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -72,7 +72,7 @@ services:
     networks:
       - ${NETWORKS}
   wk-oidc-server:
-    image: vicalloy/oidc-server
+    image: hub.mirrorify.net/vicalloy/oidc-server
     volumes:
       - ./config/uc/fixtures:/app/oidc_server/fixtures:z
       - ./data/uc/db:/app/db:z
@@ -84,7 +84,7 @@ services:
     networks:
       - ${NETWORKS}
   wk-nginx:
-    image: nginx
+    image: hub.mirrorify.net/library/nginx
     ports:
       - ${HTTP_IP}:${HTTP_PORT_IP}:443
     volumes:
